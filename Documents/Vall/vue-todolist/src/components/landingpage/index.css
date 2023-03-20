@@ -1,0 +1,8 @@
+@tailwind components;
+      
+
+@layer components {
+    .LandingPage {
+        @apply pt-[10vh] dark:bg-dark bg-light text-dark dark:text-light h-[150vh] overflow-y-auto
+     }
+}
