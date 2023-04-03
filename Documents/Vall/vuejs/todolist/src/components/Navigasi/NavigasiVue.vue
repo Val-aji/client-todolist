@@ -5,15 +5,16 @@
 
     export default {
         name: "NavBar",
+        props: {
+            listNavigasi: {
+                type: Object,
+                requred: false,
+                default: []
+            }
+        },
         data() {
             return {
-                
-                dark: false,
-                listTombol: [
-                    {id: 0,name: "Proses", status: true, myFunction: () => this.setStatus(0)},
-                    {id: 1,name: "Selesai", status: false, myFunction: () => this.setStatus(1)},
-                    {id: 2,name: " ", status: false}
-                ]
+                dark: false
             }
         },
         setup() {
@@ -36,7 +37,7 @@
             const darkTodolist = Cookie.get("darkTodolist")
             this.dark = darkTodolist
         },
-        emits: ["setPosisi"],
+        emits: ["setStatus"],
         methods: {
             handleDarkMode() {
                 this.dark = !this.dark
@@ -78,11 +79,11 @@
             class="footerNav"
         >
             <button 
-                v-for="(list, index) in listTombol"
+                v-for="(list, index) in listNavigasi"
                 class="childNav" 
                 :key="index"
                 :class="list.status ? 'activeNav' : ''"
-                @click="list.myFunction"
+                @click="$emit('setStatus', index)"
             >
                 {{ list.name }}
             </button>

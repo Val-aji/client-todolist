@@ -31,13 +31,13 @@
 </script>
 
 <template>
-    <div class="ComponentCard">
+    <div class="ComponentCard dark:bg-dark overflow-y-auto">
         <div class="cardTodo w-full flex flex-wrap justify-end pb-[5vh] h-max ">
             <p v-if="!dataTodolist || dataTodolist.length === 0" class="POPPINS mx-auto mt-[10vh] text-dark dark:text-light">Data tidak ditemukan</p>
 
             <div v-for="(data, index) of dataTodolist"
-                class="card border border-[2px]" 
-                :class="data.status ?    'border-green-600  dark:border-green-400' : 'border-red-600 dark:border-dark-400'" 
+                class="card border-[2px]" 
+                :class="data.status ? 'border-green-600  dark:border-green-400' : 'border-red-600 dark:border-dark-400'" 
                 :key="index"
             >
                 <div class="containerTitle">

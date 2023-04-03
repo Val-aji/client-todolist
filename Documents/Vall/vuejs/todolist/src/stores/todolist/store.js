@@ -2,30 +2,43 @@ import { defineStore } from 'pinia';
 import { useStoreAccount } from '../storeAccount';
 import { storeToRefs } from 'pinia';
 
-
 export const useStoreTodolist = defineStore('storeTodolist', {
     state: () => ({
         posisi: "proses",
-        data: []
+        data: [],
+        navbarHP: [
+            {id: 0, name: "proses", status: true},
+            {id: 1, name: "selesai", status: false}
+        ],
     }),
     getters: {
         idTerakhir(state) {
-            return state.dataTodolist[0].id
+            return state.data.length >= 1 ? state.dataTodolist[0].id : 0 
         },
         dataTodolist(state) {
             if(this.posisi === "proses") {
-                return state.data.filter(item => !item.status)
+                
+                return state.data.filter(item => !item.status).reverse()
                 
             } else if(this.posisi === "selesai") {
-                return state.data.filter(item => item.status)
+                return state.data.filter(item => item.status).reverse()
+                
             } else {
                 return []
             }
         }
     },
     actions: {
-        setPosisi(value) {
-            this.posisi = value
+        setStatus(index) {
+            this.navbarHP.map(item => {
+                if(item.id === index) {
+                    item.status = true
+                    this.posisi = item.name
+                } else {
+                    item.status = false
+                }
+            })
+            
         },
         async getDataTodolist() {
             const {getIsLogin, instance, formData} = storeToRefs(useStoreAccount())
@@ -43,7 +56,6 @@ export const useStoreTodolist = defineStore('storeTodolist', {
             } catch (error) {
                 console.log({error})
             }
-            
         },
         async insertData(value) {
             const storeAccount = useStoreAccount()
@@ -56,8 +68,10 @@ export const useStoreTodolist = defineStore('storeTodolist', {
                 username: "anonymous",
                 title: value,
                 status: false,
-                tanggalMulai,                    tanggalBerakhir: false
+                tanggalMulai,                    
+                tanggalBerakhir: false
             }
+            
 
             if(isLogin.value) {
                 if(!instance.value || !formData.value) return false
@@ -86,7 +100,9 @@ export const useStoreTodolist = defineStore('storeTodolist', {
                     console.log({error})
                     return false
                 }
-            } 
+            } else {
+                this.data.push(obj)
+            }
         },
         async deleteData(id) {
             if(!id || typeof id != "number") return false
@@ -94,8 +110,8 @@ export const useStoreTodolist = defineStore('storeTodolist', {
             const storeAccount = useStoreAccount()
             const {isLogin, instance, formData} = storeToRefs(storeAccount)
 
-            const newDataTodolist = this.data.filter(i => i.id != id)
-
+            const newDataTodolist = this.data.slice().filter(i => i.id != id)
+            
             if(!isLogin.value) {
                 this.data = newDataTodolist            
                 return false

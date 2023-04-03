@@ -1,26 +1,24 @@
 <script>
   import {  RouterView } from 'vue-router'
   import "./index.css"
-  import NavigasiVue from './components/Navigasi/NavigasiVue.vue';
   import { useStoreAccount } from './stores/storeAccount';
-  import { storeToRefs } from 'pinia';
-
+  
+  
   export default {
     name: "App",
-    beforeMount() {
+    setup() {
       const storeAccount = useStoreAccount()
-      const {optionsAPI} = storeToRefs(storeAccount)
-      storeAccount.cekLogin()
-
+      const {cekLogin} = storeAccount
+      
+      return {cekLogin}
     },
-    components: {
-      NavigasiVue
-    }
+    beforeMount() {
+      this.cekLogin()
+    },
   }
 </script>
 
 <template>
-  <NavigasiVue />
-  <RouterView class="bg-light dark:bg-dark h-[110vh] overflow-y-aut pt-[10vh]" />
+  <RouterView ref="componentUtama"/>
 </template>
 

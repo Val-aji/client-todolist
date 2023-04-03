@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Nouval Aji Satrio",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^9.13.0",
     "axios": "^1.3.4",
     "js-cookie": "^3.0.1",
     "pinia": "^2.0.32",
