@@ -2,7 +2,7 @@
   import {  RouterView } from 'vue-router'
   import "./index.css"
   import { useStoreAccount } from './stores/storeAccount';
-  
+  import NavigasiRouter from "./components/NavigasiRouter/NavigasiRouter.vue"
   
   export default {
     name: "App",
@@ -15,10 +15,19 @@
     beforeMount() {
       this.cekLogin()
     },
+    components: {
+      NavigasiRouter
+    },
+    methods: {
+      handleEnd() {
+        console.log("hei")
+      }
+    }
   }
 </script>
 
 <template>
-  <RouterView ref="componentUtama"/>
+  <RouterView ref="componentUtama" />
+  <NavigasiRouter  />
 </template>
 

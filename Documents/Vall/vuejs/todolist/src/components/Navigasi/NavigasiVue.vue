@@ -64,9 +64,9 @@
             class="headerNav"
         >
             <p 
-                class="POPPINS judulNav"
+                class="font-[POPPINS] judulNav"
             >
-                Todo List
+                Todokey
             </p>
             <button 
                 class="offDark" 
@@ -80,7 +80,7 @@
         >
             <button 
                 v-for="(list, index) in listNavigasi"
-                class="childNav" 
+                class="childNav font-[ROBOTO]" 
                 :key="index"
                 :class="list.status ? 'activeNav' : ''"
                 @click="$emit('setStatus', index)"

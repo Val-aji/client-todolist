@@ -74,14 +74,14 @@
                 
                 <div class="identitas">
                     <input type="text" 
-                        class="INTER namaProfile bg-inherit border-none border-red-500 outline-none "
+                        class="font-[INTER] namaProfile bg-inherit border-none border-red-500 outline-none "
                         v-model="namaLengkap"
                         :readonly="!isUbah"
                         :class="isUbah ? 'inputActive' : ''"
                         :placeholder="isUbah ? 'your fullname...' : ''"
                     />   
                     <input type="text" 
-                        class="OPENSANS bioProfile w-full  bg-inherit border-none py-[.1vh] border-red-500 outline-none text-center text-slate-400 dark:text-slate-100"
+                        class=" bioProfile w-full  bg-inherit border-none py-[.1vh] border-red-500 outline-none text-center text-slate-400 dark:text-slate-100"
                         v-model="bio"
                         :readonly="!isUbah"
                         :class="isUbah ? 'inputActive' : ''"
@@ -90,7 +90,7 @@
                     <div class="tombol w-full">
                         <div class="login" v-if="isLogin">
                             <button 
-                                class="POPPINS tombolLogin text-light dark:text-dark mt-4 mb-2 "
+                                class="font-[POPPINS] tombolLogin text-light dark:text-dark mt-4 mb-2 "
                                 :class="isUbah ? 'bg-green-500  ' : 'bg-dark dark:bg-light'"
                                 @click="setIsUbah"
 
@@ -100,7 +100,7 @@
                             </button>
                             <button 
                                 v-if="!isUbah"
-                                class="tombolLogin bg-green-500 POPPINS dark:font-bold dark:text-dark text-light"
+                                class="tombolLogin bg-green-500 font-[POPPINS] dark:font-bold dark:text-dark text-light"
                                 @click="handleLogout"
                                 >  
                                 Logout
@@ -113,13 +113,13 @@
                             class="noLogin"
                         >
                             <button 
-                                class="daftar POPPINS bg-dark dark:bg-light dark:text-black text-light"
+                                class="daftar font-[POPPINS] bg-dark dark:bg-light dark:text-black text-light"
                                 @click="() => setPosisi('register')"                                
                             >
                                 Daftar Baru
                             </button>
                             <button 
-                                class="login POPPINS bg-green-500 text-light dark:text-dark "
+                                class="login font-[POPPINS] bg-green-500 text-light dark:text-dark "
                                 @click="() => setPosisi('login')" 
                             >
                                 Login

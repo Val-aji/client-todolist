@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 
 export const useStoreTodolist = defineStore('storeTodolist', {
     state: () => ({
-        posisi: "proses",
         data: [],
         navbarHP: [
             {id: 0, name: "proses", status: true},
@@ -12,15 +11,21 @@ export const useStoreTodolist = defineStore('storeTodolist', {
         ],
     }),
     getters: {
+        posisi(state) {
+            const currentPosisi = state.navbarHP.filter(item => item.status)[0]
+            if(currentPosisi.name === "proses") return false;
+
+            return true;
+        },
         idTerakhir(state) {
             return state.data.length >= 1 ? state.dataTodolist[0].id : 0 
         },
         dataTodolist(state) {
-            if(this.posisi === "proses") {
+            if(!state.posisi) {
                 
                 return state.data.filter(item => !item.status).reverse()
                 
-            } else if(this.posisi === "selesai") {
+            } else if(state.posisi) {
                 return state.data.filter(item => item.status).reverse()
                 
             } else {
@@ -33,12 +38,10 @@ export const useStoreTodolist = defineStore('storeTodolist', {
             this.navbarHP.map(item => {
                 if(item.id === index) {
                     item.status = true
-                    this.posisi = item.name
                 } else {
                     item.status = false
                 }
             })
-            
         },
         async getDataTodolist() {
             const {getIsLogin, instance, formData} = storeToRefs(useStoreAccount())

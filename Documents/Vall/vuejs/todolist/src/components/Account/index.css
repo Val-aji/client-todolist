@@ -10,7 +10,7 @@
     }
 
     .Account {
-        @apply w-full sm:w-[60%] pb-12 flex items-center justify-between pr-4 mt-1  mb-0 sm:w-3/6 sm:border-l border-green-500 
+        @apply w-full sm:w-[60%]  flex items-center justify-between pr-4 mt-1  mb-0 sm:w-3/6 sm:border-l border-green-500 
     }
     .Account >  img {
         @apply  w-[30%] preTablet:w-[25vw] rounded-tl-3xl rounded-br-3xl h-[20vh]  my-4 mx-4 lg:h-[30vh] xl:h-[50vh]

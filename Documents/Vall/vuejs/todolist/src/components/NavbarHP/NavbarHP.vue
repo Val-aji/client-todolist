@@ -8,9 +8,9 @@
                 default: []
             },
             posisi: {
-                type: String,
+                type: Boolean,
                 required: false,
-                default: "proses"           
+                default: false
             }
         },
         emits: ["setStatus"],
@@ -22,6 +22,7 @@
 
 <template>
     <div class="block sm:hidden " >
+        
         <div class="navbarHP w-full">
             <div class="containerNavbarHP flex w-full justify-center mt-[1vh]">
                 <button 
@@ -39,8 +40,10 @@
             </div>
         </div>
 
+        
         <!-- diisi  parent -->
-        <slot v-if="posisi === 'proses'"></slot>
+        <slot v-if="!posisi"></slot>
+        
     </div>
     
 

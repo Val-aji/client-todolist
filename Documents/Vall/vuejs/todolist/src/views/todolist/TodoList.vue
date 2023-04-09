@@ -35,7 +35,7 @@
         methods: {
             handleScroll(e) {
                 const account = useElementBounding(this.$refs.account)    
-                const posisiAccount = parseInt(account.y.value) <= -200
+                const posisiAccount = parseInt(account.y.value) <= -175
                 
                 if(posisiAccount) {
                     this.isFixed = true
@@ -51,7 +51,7 @@
 <template>
 
     <NavigasiVue :listNavigasi="navbarHP" @setStatus="setStatus"/>    
-    <div id="pageTodolist"  class="pt-[10vh] dark:bg-dark h-[110vh]" @touchmove="handleScroll" @touchend="handleScroll">
+    <div id="pageTodolist"  class="pt-[10vh] dark:bg-dark h-[110vh]" :style="{'scroll-snap-type': 'y mandatory'}" @touchmove="handleScroll" @touchend="handleScroll">
       <AccountVue ref="account" class="AccountVue" >
             <InputTodo />
       </AccountVue>

@@ -84,23 +84,25 @@
             >
             </button>
 
-            <p class="judulFormLogin ROBOTO">Login</p>
+            <p class="judulFormLogin font-[ROBOTO]">Login</p>
 
             <div class="containerInput">
-                <p class="judulInput INTER">username</p>
+                <p class="judulInput font-[POPPINS]">username</p>
                 <input type="text" 
                     v-model.trim="username" 
                     name="username" 
+                    class="font-[INTER]"
                     required
                     autocomplete
                 />
             </div>
 
             <div class="containerInput">
-                <p class="judulInput POPPINS">Password</p>
+                <p class="judulInput font-[POPPINS]">Password</p>
                 <input 
                     type="password" 
                     required 
+                    class="font-[INTER]"
                     autocomplete 
                     v-model.trim="password" 
                     name="password"

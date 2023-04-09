@@ -91,11 +91,11 @@
             >
             </button>
 
-            <p class="judulRegister ROBOTO">Register</p>
+            <p class="judulRegister font-[ROBOTO]">Register</p>
 
             <p 
                 v-if="isError" 
-                class="POPPINS mb-[3vh] text-red-500 text-sm mx-auto"
+                class="font-[POPPINS] mb-[3vh] text-red-500 text-sm mx-auto"
             >
                 {{ pesanError }}
             </p>
@@ -105,9 +105,9 @@
                 ref="formData"
             >
                 <div class="containerInput">
-                    <p class="judulInput POPPINS">Nama Lengkap</p>
+                    <p class="judulInput font-[POPPINS]">Nama Lengkap</p>
                     <input 
-                        class="INTER" 
+                        class="font-[INTER]" 
                         type="text" 
                         required autocomplete 
                         v-model.trim="namaLengkap" 
@@ -115,9 +115,9 @@
                     />
                 </div>
                 <div class="containerInput">
-                    <p class="judulInput POPPINS" >Username</p>
+                    <p class="judulInput font-[POPPINS]" >Username</p>
                     <input 
-                        class="INTER"  
+                        class="font-[INTER]"  
                         type="text" 
                         v-model.trim="username" 
                         required 
@@ -126,9 +126,9 @@
                     />
                 </div>
                 <div class="containerInput">
-                    <p class="judulInput POPPINS">Password</p>
+                    <p class="judulInput font-[POPPINS]">Password</p>
                     <input 
-                        class="INTER"  
+                        class="font-[INTER]"  
                         type="password" 
                         required 
                         autocomplete 
@@ -138,7 +138,7 @@
                 </div>
                 <button 
                     type="submit" 
-                    class="ROBOTO"
+                    class="font-[ROBOTO]"
                     ref="tombolSubmit"
                 >
                     Registrasi
